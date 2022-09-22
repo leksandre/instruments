@@ -1,5 +1,5 @@
 //php example here
-
+<?php
 $zip = new ZipArchive;
 
 if ($zip->open('template.docx') === TRUE) {
@@ -19,3 +19,4 @@ $zip->addFromString('word/document.xml',$content);
 $zip->close();
 
 }
+?>
