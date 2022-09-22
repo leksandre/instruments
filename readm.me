@@ -1,0 +1,21 @@
+//php example here
+
+$zip = new ZipArchive;
+
+if ($zip->open('template.docx') === TRUE) {
+
+$handle = fopen("document.xml", "r");
+
+$content = fread($handle, filesize("document.xml"));
+
+fclose($handle);
+
+$content = str_replace("{customer_r}","Иванов Иван Иванович",$content);
+
+$zip->deleteName('word/document.xml');
+
+$zip->addFromString('word/document.xml',$content);
+
+$zip->close();
+
+}
